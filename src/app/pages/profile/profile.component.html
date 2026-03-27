@@ -1,7 +1,7 @@
 <div class="profile-page fade-in" *ngIf="currentUser">
   <div class="page-header">
-    <h1>My Profile</h1>
-    <p>Manage your personal information and account settings.</p>
+    <h1>{{ 'PROFILE.TITLE' | translate }}</h1>
+    <p>{{ 'PROFILE.SUBTITLE' | translate }}</p>
   </div>
 
   <div class="profile-layout">
@@ -13,20 +13,20 @@
         </div>
         <h2>{{ currentUser.firstName }} {{ currentUser.lastName }}</h2>
         <span class="badge badge-info">{{ currentUser.role }}</span>
-        <p class="customer-since">Customer since {{ currentUser.customerSince }}</p>
+        <p class="customer-since">{{ 'PROFILE.CUSTOMER_SINCE' | translate }} {{ currentUser.customerSince }}</p>
       </div>
 
       <div class="profile-stats">
         <div class="profile-stat">
-          <span class="stat-label">Customer ID</span>
+          <span class="stat-label">{{ 'PROFILE.CUSTOMER_ID' | translate }}</span>
           <span class="stat-value">{{ currentUser.id }}</span>
         </div>
         <div class="profile-stat">
-          <span class="stat-label">Preferred Branch</span>
+          <span class="stat-label">{{ 'PROFILE.PREFERRED_BRANCH' | translate }}</span>
           <span class="stat-value">{{ currentUser.preferredBranch }}</span>
         </div>
         <div class="profile-stat">
-          <span class="stat-label">Last Login</span>
+          <span class="stat-label">{{ 'PROFILE.LAST_LOGIN' | translate }}</span>
           <span class="stat-value">{{ currentUser.lastLogin | date:'medium' }}</span>
         </div>
       </div>
@@ -36,28 +36,28 @@
     <div class="details-section">
       <div class="card">
         <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
-          <h3>Personal Information</h3>
+          <h3>{{ 'PROFILE.PERSONAL_INFO' | translate }}</h3>
           <button class="btn btn-outline btn-sm" (click)="toggleEdit()">
             <mat-icon>{{ isEditing ? 'close' : 'edit' }}</mat-icon>
-            {{ isEditing ? 'Cancel' : 'Edit' }}
+            {{ isEditing ? ('PROFILE.CANCEL' | translate) : ('PROFILE.EDIT' | translate) }}
           </button>
         </div>
 
         <div class="info-grid" *ngIf="!isEditing">
           <div class="info-item">
-            <span class="info-label">First Name</span>
+            <span class="info-label">{{ 'PROFILE.FIRST_NAME' | translate }}</span>
             <span class="info-value">{{ currentUser.firstName }}</span>
           </div>
           <div class="info-item">
-            <span class="info-label">Last Name</span>
+            <span class="info-label">{{ 'PROFILE.LAST_NAME' | translate }}</span>
             <span class="info-value">{{ currentUser.lastName }}</span>
           </div>
           <div class="info-item">
-            <span class="info-label">Email</span>
+            <span class="info-label">{{ 'PROFILE.EMAIL' | translate }}</span>
             <span class="info-value">{{ currentUser.email }}</span>
           </div>
           <div class="info-item">
-            <span class="info-label">Phone</span>
+            <span class="info-label">{{ 'PROFILE.PHONE' | translate }}</span>
             <span class="info-value">{{ currentUser.phone }}</span>
           </div>
         </div>
@@ -65,27 +65,27 @@
         <div *ngIf="isEditing" class="edit-form">
           <div class="form-row">
             <div class="form-group col-6">
-              <label>First Name</label>
+              <label>{{ 'PROFILE.FIRST_NAME' | translate }}</label>
               <input type="text" class="form-control" [(ngModel)]="editForm.firstName">
             </div>
             <div class="form-group col-6">
-              <label>Last Name</label>
+              <label>{{ 'PROFILE.LAST_NAME' | translate }}</label>
               <input type="text" class="form-control" [(ngModel)]="editForm.lastName">
             </div>
           </div>
           <div class="form-row">
             <div class="form-group col-6">
-              <label>Email</label>
+              <label>{{ 'PROFILE.EMAIL' | translate }}</label>
               <input type="email" class="form-control" [(ngModel)]="editForm.email">
             </div>
             <div class="form-group col-6">
-              <label>Phone</label>
+              <label>{{ 'PROFILE.PHONE' | translate }}</label>
               <input type="tel" class="form-control" [(ngModel)]="editForm.phone">
             </div>
           </div>
           <div class="form-actions">
-            <button class="btn btn-primary" (click)="saveProfile()">Save Changes</button>
-            <button class="btn btn-outline" (click)="toggleEdit()">Cancel</button>
+            <button class="btn btn-primary" (click)="saveProfile()">{{ 'PROFILE.SAVE_CHANGES' | translate }}</button>
+            <button class="btn btn-outline" (click)="toggleEdit()">{{ 'PROFILE.CANCEL' | translate }}</button>
           </div>
         </div>
       </div>
@@ -93,38 +93,38 @@
       <!-- Security -->
       <div class="card">
         <div class="card-header">
-          <h3>Security</h3>
+          <h3>{{ 'PROFILE.SECURITY' | translate }}</h3>
         </div>
         <div class="security-items">
           <div class="security-item">
             <div class="security-info">
               <mat-icon>lock</mat-icon>
               <div>
-                <strong>Password</strong>
-                <p>Last changed 45 days ago</p>
+                <strong>{{ 'PROFILE.PASSWORD' | translate }}</strong>
+                <p>{{ 'PROFILE.PASSWORD_CHANGED' | translate }}</p>
               </div>
             </div>
-            <button class="btn btn-outline btn-sm">Change</button>
+            <button class="btn btn-outline btn-sm">{{ 'PROFILE.CHANGE' | translate }}</button>
           </div>
           <div class="security-item">
             <div class="security-info">
               <mat-icon>smartphone</mat-icon>
               <div>
-                <strong>Two-Factor Authentication</strong>
-                <p>Enabled via SMS</p>
+                <strong>{{ 'PROFILE.TWO_FACTOR' | translate }}</strong>
+                <p>{{ 'PROFILE.TWO_FACTOR_STATUS' | translate }}</p>
               </div>
             </div>
-            <span class="badge badge-success">Active</span>
+            <span class="badge badge-success">{{ 'PROFILE.ACTIVE' | translate }}</span>
           </div>
           <div class="security-item">
             <div class="security-info">
               <mat-icon>fingerprint</mat-icon>
               <div>
-                <strong>Biometric Login</strong>
-                <p>Not configured</p>
+                <strong>{{ 'PROFILE.BIOMETRIC' | translate }}</strong>
+                <p>{{ 'PROFILE.NOT_CONFIGURED' | translate }}</p>
               </div>
             </div>
-            <button class="btn btn-outline btn-sm">Set Up</button>
+            <button class="btn btn-outline btn-sm">{{ 'PROFILE.SET_UP' | translate }}</button>
           </div>
         </div>
       </div>
@@ -132,13 +132,13 @@
       <!-- Preferences -->
       <div class="card">
         <div class="card-header">
-          <h3>Communication Preferences</h3>
+          <h3>{{ 'PROFILE.COMMUNICATION_PREFS' | translate }}</h3>
         </div>
         <div class="pref-items">
           <div class="pref-item">
             <div>
-              <strong>Email Notifications</strong>
-              <p>Receive updates about your loans and applications</p>
+              <strong>{{ 'PROFILE.EMAIL_NOTIFICATIONS' | translate }}</strong>
+              <p>{{ 'PROFILE.EMAIL_NOTIFICATIONS_DESC' | translate }}</p>
             </div>
             <label class="toggle">
               <input type="checkbox" checked>
@@ -147,8 +147,8 @@
           </div>
           <div class="pref-item">
             <div>
-              <strong>SMS Alerts</strong>
-              <p>Get payment reminders via text message</p>
+              <strong>{{ 'PROFILE.SMS_ALERTS' | translate }}</strong>
+              <p>{{ 'PROFILE.SMS_ALERTS_DESC' | translate }}</p>
             </div>
             <label class="toggle">
               <input type="checkbox" checked>
@@ -157,8 +157,8 @@
           </div>
           <div class="pref-item">
             <div>
-              <strong>Marketing Communications</strong>
-              <p>Receive information about new products and offers</p>
+              <strong>{{ 'PROFILE.MARKETING' | translate }}</strong>
+              <p>{{ 'PROFILE.MARKETING_DESC' | translate }}</p>
             </div>
             <label class="toggle">
               <input type="checkbox">

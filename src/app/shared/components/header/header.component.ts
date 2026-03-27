@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { NotificationService, Notification } from '../../services/notification.service';
+import { LanguageService, LanguageOption } from '../../services/language.service';
 import { User } from '../../models/user.model';
 
 @Component({
@@ -16,12 +17,18 @@ export class HeaderComponent implements OnInit {
   notifications: Notification[] = [];
   unreadCount = 0;
   showNotifications = false;
+  languages: LanguageOption[];
+  currentLang: string;
 
   constructor(
     private authService: AuthService,
     private notificationService: NotificationService,
-    private router: Router
-  ) {}
+    private router: Router,
+    public languageService: LanguageService
+  ) {
+    this.languages = this.languageService.languages;
+    this.currentLang = this.languageService.currentLang;
+  }
 
   ngOnInit(): void {
     this.authService.currentUser$.subscribe(user => {
@@ -31,6 +38,10 @@ export class HeaderComponent implements OnInit {
     this.notificationService.notifications$.subscribe(notifications => {
       this.notifications = notifications;
       this.unreadCount = this.notificationService.unreadCount;
+    });
+
+    this.languageService.currentLang$.subscribe(lang => {
+      this.currentLang = lang;
     });
   }
 
@@ -44,6 +55,10 @@ export class HeaderComponent implements OnInit {
 
   markAllRead(): void {
     this.notificationService.markAllAsRead();
+  }
+
+  switchLanguage(langCode: string): void {
+    this.languageService.setLanguage(langCode);
   }
 
   logout(): void {

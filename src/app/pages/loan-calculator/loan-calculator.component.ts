@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoanService } from '../../shared/services/loan.service';
 import { LoanType, LoanCalculation } from '../../shared/models/loan.model';
+import { LanguageService } from '../../shared/services/language.service';
 
 @Component({
   selector: 'app-loan-calculator',
@@ -28,7 +29,7 @@ export class LoanCalculatorComponent implements OnInit {
     [LoanType.HOME_EQUITY]: 4.8
   };
 
-  constructor(private loanService: LoanService) {}
+  constructor(private loanService: LoanService, private languageService: LanguageService) {}
 
   ngOnInit(): void {
     this.calculate();
@@ -77,7 +78,7 @@ export class LoanCalculatorComponent implements OnInit {
   }
 
   formatCurrency(value: number): string {
-    return '$' + value.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    return this.languageService.formatCurrency(value);
   }
 
   getInterestPercentage(): number {

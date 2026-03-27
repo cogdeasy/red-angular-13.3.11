@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 interface NavItem {
   icon: string;
-  label: string;
+  labelKey: string;
   route: string;
   badge?: string;
 }
@@ -17,11 +17,11 @@ export class SidebarComponent {
   @Input() isCollapsed = false;
 
   navItems: NavItem[] = [
-    { icon: 'dashboard', label: 'Dashboard', route: '/dashboard' },
-    { icon: 'description', label: 'My Loans', route: '/loan-status' },
-    { icon: 'add_circle_outline', label: 'Apply for Loan', route: '/loan-application' },
-    { icon: 'calculate', label: 'Loan Calculator', route: '/loan-calculator' },
-    { icon: 'person', label: 'My Profile', route: '/profile' }
+    { icon: 'dashboard', labelKey: 'SIDEBAR.DASHBOARD', route: '/dashboard' },
+    { icon: 'description', labelKey: 'SIDEBAR.MY_LOANS', route: '/loan-status' },
+    { icon: 'add_circle_outline', labelKey: 'SIDEBAR.APPLY_FOR_LOAN', route: '/loan-application' },
+    { icon: 'calculate', labelKey: 'SIDEBAR.LOAN_CALCULATOR', route: '/loan-calculator' },
+    { icon: 'person', labelKey: 'SIDEBAR.MY_PROFILE', route: '/profile' }
   ];
 
   constructor(public router: Router) {}

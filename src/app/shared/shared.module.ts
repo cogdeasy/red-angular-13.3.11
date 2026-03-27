@@ -16,6 +16,7 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDividerModule } from '@angular/material/divider';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -36,12 +37,14 @@ import { MatDividerModule } from '@angular/material/divider';
     MatBadgeModule,
     MatTooltipModule,
     MatProgressSpinnerModule,
-    MatDividerModule
+    MatDividerModule,
+    TranslateModule
   ],
   exports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    TranslateModule,
     HeaderComponent,
     FooterComponent,
     SidebarComponent,

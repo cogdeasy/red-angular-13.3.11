@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoanService } from '../../shared/services/loan.service';
 import { Loan, LoanStatus, LoanType } from '../../shared/models/loan.model';
+import { LanguageService } from '../../shared/services/language.service';
 
 @Component({
   selector: 'app-loan-status',
@@ -16,15 +17,15 @@ export class LoanStatusComponent implements OnInit {
   searchQuery = '';
 
   statusFilters = [
-    { value: 'all', label: 'All Loans' },
-    { value: LoanStatus.ACTIVE, label: 'Active' },
-    { value: LoanStatus.APPROVED, label: 'Approved' },
-    { value: LoanStatus.UNDER_REVIEW, label: 'Under Review' },
-    { value: LoanStatus.SUBMITTED, label: 'Submitted' },
-    { value: LoanStatus.CLOSED, label: 'Closed' }
+    { value: 'all', labelKey: 'LOAN_STATUS.ALL_LOANS' },
+    { value: LoanStatus.ACTIVE, labelKey: 'LOAN_STATUS.ACTIVE' },
+    { value: LoanStatus.APPROVED, labelKey: 'LOAN_STATUS.APPROVED' },
+    { value: LoanStatus.UNDER_REVIEW, labelKey: 'LOAN_STATUS.UNDER_REVIEW' },
+    { value: LoanStatus.SUBMITTED, labelKey: 'LOAN_STATUS.SUBMITTED' },
+    { value: LoanStatus.CLOSED, labelKey: 'LOAN_STATUS.CLOSED' }
   ];
 
-  constructor(private loanService: LoanService) {}
+  constructor(private loanService: LoanService, private languageService: LanguageService) {}
 
   ngOnInit(): void {
     this.loadLoans();
@@ -101,15 +102,15 @@ export class LoanStatusComponent implements OnInit {
   }
 
   formatCurrency(value: number): string {
-    return '$' + value.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    return this.languageService.formatCurrency(value);
   }
 
   getTimelineSteps(loan: Loan): { label: string; date: string; completed: boolean; active: boolean }[] {
     const steps = [
-      { label: 'Application Submitted', date: loan.applicationDate, completed: true, active: false },
-      { label: 'Under Review', date: '', completed: false, active: false },
-      { label: 'Decision', date: loan.approvalDate || '', completed: false, active: false },
-      { label: 'Funds Disbursed', date: '', completed: false, active: false }
+      { label: 'LOAN_STATUS.TIMELINE_SUBMITTED', date: loan.applicationDate, completed: true, active: false },
+      { label: 'LOAN_STATUS.TIMELINE_UNDER_REVIEW', date: '', completed: false, active: false },
+      { label: 'LOAN_STATUS.TIMELINE_DECISION', date: loan.approvalDate || '', completed: false, active: false },
+      { label: 'LOAN_STATUS.TIMELINE_DISBURSED', date: '', completed: false, active: false }
     ];
 
     switch (loan.status) {
@@ -134,7 +135,7 @@ export class LoanStatusComponent implements OnInit {
       case LoanStatus.REJECTED:
         steps[1].completed = true;
         steps[2].completed = true;
-        steps[2].label = 'Rejected';
+        steps[2].label = 'LOAN_STATUS.TIMELINE_REJECTED';
         break;
     }
 

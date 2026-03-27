@@ -45,21 +45,13 @@ $hsbc-pale-gray: #F3F3F3;
 .logo-container {
   display: flex;
   align-items: center;
-  gap: 12px;
   cursor: pointer;
   text-decoration: none;
 
-  .logo-svg {
-    height: 32px;
-    width: 120px;
-  }
-
-  .app-title {
-    font-size: 1rem;
-    font-weight: 400;
-    color: $hsbc-dark-gray;
-    padding-left: 12px;
-    border-left: 1px solid $hsbc-light-gray;
+  .hsbc-logo-img {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
   }
 }
 
@@ -229,8 +221,55 @@ $hsbc-pale-gray: #F3F3F3;
   }
 }
 
+.language-selector {
+  .lang-btn {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: none;
+    border: 1px solid $hsbc-light-gray;
+    border-radius: 6px;
+    cursor: pointer;
+    padding: 6px 10px;
+    color: $hsbc-black;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.2s;
+
+    &:hover {
+      background: $hsbc-pale-gray;
+      border-color: $hsbc-dark-gray;
+    }
+
+    mat-icon {
+      font-size: 18px;
+      width: 18px;
+      height: 18px;
+    }
+
+    .lang-arrow {
+      font-size: 18px;
+      width: 18px;
+      height: 18px;
+      margin-left: -2px;
+    }
+  }
+}
+
+.active-lang {
+  background: rgba($hsbc-red, 0.05);
+  color: $hsbc-red;
+  font-weight: 500;
+
+  mat-icon {
+    color: $hsbc-red;
+    margin-left: auto;
+  }
+}
+
 @media (max-width: 768px) {
   .app-title { display: none; }
   .user-info { display: none; }
   .notifications-panel { width: 320px; right: -40px; }
+  .lang-label { display: none; }
 }

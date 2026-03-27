@@ -51,10 +51,11 @@ $hsbc-pale-gray: #F3F3F3;
   position: relative;
   z-index: 1;
 
-  .logo-svg-large {
-    height: 40px;
-    width: 120px;
-    margin-bottom: 32px;
+  .login-logo {
+    height: 48px;
+    width: auto;
+    margin-bottom: 40px;
+    filter: brightness(0) invert(1);
   }
 
   h1 {
@@ -84,8 +85,9 @@ $hsbc-pale-gray: #F3F3F3;
     opacity: 0.9;
 
     .feature-icon {
-      font-size: 0.5rem;
-      opacity: 0.7;
+      font-size: 20px;
+      opacity: 0.85;
+      color: $hsbc-white;
     }
   }
 }

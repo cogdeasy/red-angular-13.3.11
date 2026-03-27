@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { LoanService } from '../../shared/services/loan.service';
 import { NotificationService } from '../../shared/services/notification.service';
 import { LoanType, LoanApplication } from '../../shared/models/loan.model';
+import { LanguageService } from '../../shared/services/language.service';
 
 @Component({
   selector: 'app-loan-application',
@@ -28,17 +29,18 @@ export class LoanApplicationComponent implements OnInit {
   countries = ['United Kingdom', 'United States', 'Hong Kong', 'Singapore', 'Australia', 'Canada', 'India', 'China'];
 
   steps = [
-    { number: 1, label: 'Personal Details' },
-    { number: 2, label: 'Employment' },
-    { number: 3, label: 'Loan Details' },
-    { number: 4, label: 'Review & Submit' }
+    { number: 1, labelKey: 'LOAN_APPLICATION.STEP_1' },
+    { number: 2, labelKey: 'LOAN_APPLICATION.STEP_2' },
+    { number: 3, labelKey: 'LOAN_APPLICATION.STEP_3' },
+    { number: 4, labelKey: 'LOAN_APPLICATION.STEP_4' }
   ];
 
   constructor(
     private fb: FormBuilder,
     private loanService: LoanService,
     private notificationService: NotificationService,
-    private router: Router
+    private router: Router,
+    private languageService: LanguageService
   ) {}
 
   ngOnInit(): void {
@@ -165,7 +167,7 @@ export class LoanApplicationComponent implements OnInit {
   }
 
   formatCurrency(value: number): string {
-    return '$' + value.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    return this.languageService.formatCurrency(value);
   }
 
   submitApplication(): void {
