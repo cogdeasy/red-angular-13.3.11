@@ -135,7 +135,7 @@
                   <mat-icon *ngIf="step.completed">check</mat-icon>
                 </div>
                 <div class="timeline-content">
-                  <span class="timeline-label">{{ step.label }}</span>
+                  <span class="timeline-label">{{ step.label | translate }}</span>
                   <span class="timeline-date" *ngIf="step.date">{{ step.date }}</span>
                 </div>
                 <div class="timeline-line" *ngIf="!last"></div>

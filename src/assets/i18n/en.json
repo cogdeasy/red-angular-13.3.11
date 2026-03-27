@@ -210,7 +210,12 @@
     "TOTAL_PAID": "Total Paid",
     "NEXT_PAYMENT_DUE": "Next Payment Due",
     "REPAYMENT_PROGRESS": "Repayment Progress",
-    "APPLICATION_TIMELINE": "Application Timeline"
+    "APPLICATION_TIMELINE": "Application Timeline",
+    "TIMELINE_SUBMITTED": "Application Submitted",
+    "TIMELINE_UNDER_REVIEW": "Under Review",
+    "TIMELINE_DECISION": "Decision",
+    "TIMELINE_DISBURSED": "Funds Disbursed",
+    "TIMELINE_REJECTED": "Rejected"
   },
   "PROFILE": {
     "TITLE": "My Profile",

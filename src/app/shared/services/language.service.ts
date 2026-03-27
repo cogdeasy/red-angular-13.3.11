@@ -28,10 +28,12 @@ export class LanguageService {
   }
 
   setLanguage(langCode: string): void {
-    this.translate.use(langCode);
-    this.currentLangSubject.next(langCode);
-    localStorage.setItem('hsbc-lang', langCode);
-    document.documentElement.lang = langCode;
+    const supported = this.languages.find(l => l.code === langCode);
+    const validLang = supported ? langCode : 'en';
+    this.translate.use(validLang);
+    this.currentLangSubject.next(validLang);
+    localStorage.setItem('hsbc-lang', validLang);
+    document.documentElement.lang = validLang;
   }
 
   get currentLang(): string {

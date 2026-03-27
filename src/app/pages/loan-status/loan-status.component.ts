@@ -107,10 +107,10 @@ export class LoanStatusComponent implements OnInit {
 
   getTimelineSteps(loan: Loan): { label: string; date: string; completed: boolean; active: boolean }[] {
     const steps = [
-      { label: 'Application Submitted', date: loan.applicationDate, completed: true, active: false },
-      { label: 'Under Review', date: '', completed: false, active: false },
-      { label: 'Decision', date: loan.approvalDate || '', completed: false, active: false },
-      { label: 'Funds Disbursed', date: '', completed: false, active: false }
+      { label: 'LOAN_STATUS.TIMELINE_SUBMITTED', date: loan.applicationDate, completed: true, active: false },
+      { label: 'LOAN_STATUS.TIMELINE_UNDER_REVIEW', date: '', completed: false, active: false },
+      { label: 'LOAN_STATUS.TIMELINE_DECISION', date: loan.approvalDate || '', completed: false, active: false },
+      { label: 'LOAN_STATUS.TIMELINE_DISBURSED', date: '', completed: false, active: false }
     ];
 
     switch (loan.status) {
@@ -135,7 +135,7 @@ export class LoanStatusComponent implements OnInit {
       case LoanStatus.REJECTED:
         steps[1].completed = true;
         steps[2].completed = true;
-        steps[2].label = 'Rejected';
+        steps[2].label = 'LOAN_STATUS.TIMELINE_REJECTED';
         break;
     }
 

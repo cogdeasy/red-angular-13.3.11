@@ -210,7 +210,12 @@
     "TOTAL_PAID": "कुल भुगतान",
     "NEXT_PAYMENT_DUE": "अगला भुगतान देय",
     "REPAYMENT_PROGRESS": "पुनर्भुगतान प्रगति",
-    "APPLICATION_TIMELINE": "आवेदन समयरेखा"
+    "APPLICATION_TIMELINE": "आवेदन समयरेखा",
+    "TIMELINE_SUBMITTED": "आवेदन जमा किया गया",
+    "TIMELINE_UNDER_REVIEW": "समीक्षाधीन",
+    "TIMELINE_DECISION": "निर्णय",
+    "TIMELINE_DISBURSED": "धन वितरित",
+    "TIMELINE_REJECTED": "अस्वीकृत"
   },
   "PROFILE": {
     "TITLE": "मेरी प्रोफ़ाइल",
