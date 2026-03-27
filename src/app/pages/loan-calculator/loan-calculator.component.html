@@ -8,7 +8,7 @@
     <!-- Input Panel -->
     <div class="card input-panel">
       <div class="card-header">
-        <h3>{{ 'CALCULATOR.CALCULATE_LOAN' | translate }}</h3>
+        <h3>{{ 'CALCULATOR.CALCULATE_YOUR_LOAN' | translate }}</h3>
       </div>
 
       <div class="form-group">
@@ -36,8 +36,8 @@
         <div class="range-slider">
           <input type="range" [(ngModel)]="term" (ngModelChange)="calculate()" min="6" max="360" step="6">
           <div class="range-labels">
-            <span>{{ 'CALCULATOR.MONTHS_SHORT' | translate:{ count: 6 } }}</span>
-            <span>{{ 'CALCULATOR.MONTHS_SHORT' | translate:{ count: 360 } }}</span>
+                        <span>{{ 'CALCULATOR.MIN_TERM' | translate }}</span>
+                        <span>{{ 'CALCULATOR.MAX_TERM' | translate }}</span>
           </div>
         </div>
       </div>
@@ -59,7 +59,7 @@
         <div class="monthly-payment">
           <span class="label">{{ 'CALCULATOR.MONTHLY_PAYMENT' | translate }}</span>
           <span class="amount">{{ formatCurrency(calculation.monthlyPayment) }}</span>
-          <span class="sub-label">{{ 'CALCULATOR.PER_MONTH_FOR' | translate:{ months: calculation.term } }}</span>
+          <span class="sub-label">{{ 'CALCULATOR.PER_MONTH' | translate:{ term: calculation.term } }}</span>
         </div>
       </div>
 
@@ -150,7 +150,7 @@
       </div>
 
       <div class="card disclaimer-card">
-        <p><strong>{{ 'CALCULATOR.DISCLAIMER_TITLE' | translate }}:</strong> {{ 'CALCULATOR.DISCLAIMER_TEXT' | translate }}</p>
+        <p>{{ 'CALCULATOR.DISCLAIMER' | translate }}</p>
       </div>
     </div>
   </div>
