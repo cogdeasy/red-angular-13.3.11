@@ -29,10 +29,10 @@ export class LoanApplicationComponent implements OnInit {
   countries = ['United Kingdom', 'United States', 'Hong Kong', 'Singapore', 'Australia', 'Canada', 'India', 'China'];
 
   steps = [
-    { number: 1, label: 'Personal Details' },
-    { number: 2, label: 'Employment' },
-    { number: 3, label: 'Loan Details' },
-    { number: 4, label: 'Review & Submit' }
+    { number: 1, labelKey: 'LOAN_APPLICATION.STEP_1' },
+    { number: 2, labelKey: 'LOAN_APPLICATION.STEP_2' },
+    { number: 3, labelKey: 'LOAN_APPLICATION.STEP_3' },
+    { number: 4, labelKey: 'LOAN_APPLICATION.STEP_4' }
   ];
 
   constructor(

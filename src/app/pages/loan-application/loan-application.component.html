@@ -47,7 +47,7 @@
             <mat-icon *ngIf="currentStep > step.number || isStepComplete(step.number)">check</mat-icon>
             <span *ngIf="currentStep <= step.number && !isStepComplete(step.number)">{{ step.number }}</span>
           </div>
-          <span class="stepper-step-label">{{ step.label }}</span>
+          <span class="stepper-step-label">{{ step.labelKey | translate }}</span>
           <div class="stepper-step-connector" *ngIf="i < steps.length - 1"></div>
         </div>
       </div>

@@ -21,7 +21,7 @@
               class="filter-tab"
               [class.active]="filterStatus === filter.value"
               (click)="filterStatus = filter.value; applyFilters()">
-        {{ filter.label }}
+        {{ filter.labelKey | translate }}
       </button>
     </div>
   </div>

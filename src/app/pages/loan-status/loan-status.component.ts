@@ -17,12 +17,12 @@ export class LoanStatusComponent implements OnInit {
   searchQuery = '';
 
   statusFilters = [
-    { value: 'all', label: 'All Loans' },
-    { value: LoanStatus.ACTIVE, label: 'Active' },
-    { value: LoanStatus.APPROVED, label: 'Approved' },
-    { value: LoanStatus.UNDER_REVIEW, label: 'Under Review' },
-    { value: LoanStatus.SUBMITTED, label: 'Submitted' },
-    { value: LoanStatus.CLOSED, label: 'Closed' }
+    { value: 'all', labelKey: 'LOAN_STATUS.ALL_LOANS' },
+    { value: LoanStatus.ACTIVE, labelKey: 'LOAN_STATUS.ACTIVE' },
+    { value: LoanStatus.APPROVED, labelKey: 'LOAN_STATUS.APPROVED' },
+    { value: LoanStatus.UNDER_REVIEW, labelKey: 'LOAN_STATUS.UNDER_REVIEW' },
+    { value: LoanStatus.SUBMITTED, labelKey: 'LOAN_STATUS.SUBMITTED' },
+    { value: LoanStatus.CLOSED, labelKey: 'LOAN_STATUS.CLOSED' }
   ];
 
   constructor(private loanService: LoanService, private languageService: LanguageService) {}
