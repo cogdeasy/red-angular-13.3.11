@@ -56,18 +56,21 @@ export class LanguageService {
   }
 
   private formatIndianNumber(value: number): string {
-    const fixed = value.toFixed(2);
+    const isNegative = value < 0;
+    const fixed = Math.abs(value).toFixed(2);
     const parts = fixed.split('.');
     const intPart = parts[0];
     const decPart = parts[1];
 
+    let result: string;
     if (intPart.length <= 3) {
-      return intPart + '.' + decPart;
+      result = intPart + '.' + decPart;
+    } else {
+      const lastThree = intPart.slice(-3);
+      const remaining = intPart.slice(0, -3);
+      const formatted = remaining.replace(/\B(?=(\d{2})+(?!\d))/g, ',');
+      result = formatted + ',' + lastThree + '.' + decPart;
     }
-
-    const lastThree = intPart.slice(-3);
-    const remaining = intPart.slice(0, -3);
-    const formatted = remaining.replace(/\B(?=(\d{2})+(?!\d))/g, ',');
-    return formatted + ',' + lastThree + '.' + decPart;
+    return (isNegative ? '-' : '') + result;
   }
 }
