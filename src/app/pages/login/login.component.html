@@ -1,37 +1,25 @@
 <div class="login-page">
   <div class="login-left">
     <div class="brand-content">
-      <div class="hsbc-logo-large">
-        <svg viewBox="0 0 120 40" class="logo-svg-large">
-          <rect x="0" y="0" width="18" height="18" fill="#FFFFFF"/>
-          <rect x="20" y="0" width="18" height="18" fill="#FFFFFF"/>
-          <rect x="0" y="20" width="18" height="18" fill="#FFFFFF"/>
-          <rect x="20" y="20" width="18" height="18" fill="#FFFFFF"/>
-          <polygon points="0,0 18,9 0,18" fill="#DB0011"/>
-          <polygon points="38,0 20,9 38,18" fill="#DB0011"/>
-          <polygon points="0,20 18,29 0,38" fill="#DB0011"/>
-          <polygon points="38,20 20,29 38,38" fill="#DB0011"/>
-          <text x="46" y="27" fill="#FFFFFF" font-family="Univers, Helvetica, Arial, sans-serif" font-size="24" font-weight="bold">HSBC</text>
-        </svg>
-      </div>
-      <h1>Welcome to<br>HSBC Loans Portal</h1>
-      <p>Manage your loans, apply for new financing, and track your applications all in one place.</p>
+      <img src="assets/images/hsbc-logo.png" alt="HSBC" class="login-logo" />
+      <h1>Personal &amp; Business<br>Lending Solutions</h1>
+      <p>Access competitive rates, flexible terms, and dedicated support for all your borrowing needs.</p>
       <div class="feature-list">
         <div class="feature-item">
-          <span class="feature-icon">&#9679;</span>
-          <span>Competitive interest rates from 3.1% APR</span>
+          <mat-icon class="feature-icon">check_circle</mat-icon>
+          <span>Rates from 3.1% APR representative</span>
         </div>
         <div class="feature-item">
-          <span class="feature-icon">&#9679;</span>
-          <span>Quick decisions on applications</span>
+          <mat-icon class="feature-icon">check_circle</mat-icon>
+          <span>Decisions in as little as 60 seconds</span>
         </div>
         <div class="feature-item">
-          <span class="feature-icon">&#9679;</span>
-          <span>Flexible repayment terms up to 25 years</span>
+          <mat-icon class="feature-icon">check_circle</mat-icon>
+          <span>Flexible terms from 6 months to 25 years</span>
         </div>
         <div class="feature-item">
-          <span class="feature-icon">&#9679;</span>
-          <span>24/7 online account management</span>
+          <mat-icon class="feature-icon">check_circle</mat-icon>
+          <span>Manage everything online, anytime</span>
         </div>
       </div>
     </div>
@@ -41,7 +29,7 @@
     <div class="login-form-container">
       <div class="login-header">
         <h2>Sign in</h2>
-        <p>Enter your credentials to access your account</p>
+        <p>Access your HSBC loans account</p>
       </div>
 
       <div class="error-banner" *ngIf="errorMessage">
@@ -96,10 +84,10 @@
       </form>
 
       <div class="login-footer">
-        <p class="demo-hint">Demo: Use any email and password to sign in</p>
+        <p class="demo-hint">Demo mode: Enter any email and password</p>
         <div class="security-note">
-          <span class="lock-icon">&#128274;</span>
-          <span>Your connection is secure and encrypted</span>
+          <mat-icon class="lock-icon">lock</mat-icon>
+          <span>256-bit SSL encrypted connection</span>
         </div>
       </div>
     </div>

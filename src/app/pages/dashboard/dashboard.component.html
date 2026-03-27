@@ -2,10 +2,10 @@
   <div class="page-header">
     <div>
       <h1>Welcome back, {{ currentUser?.firstName }}</h1>
-      <p class="subtitle">Here's an overview of your loans and financial activity.</p>
+      <p class="subtitle">Your loans and financial activity at a glance.</p>
     </div>
     <a routerLink="/loan-application" class="btn btn-primary">
-      <mat-icon>add</mat-icon> Apply for a Loan
+      <mat-icon>add</mat-icon> New Application
     </a>
   </div>
 
@@ -67,17 +67,17 @@
       <a routerLink="/loan-application" class="action-card card">
         <mat-icon class="action-icon">description</mat-icon>
         <h4>New Application</h4>
-        <p>Apply for a personal, mortgage, or business loan</p>
+        <p>Personal, mortgage, or business lending</p>
       </a>
       <a routerLink="/loan-calculator" class="action-card card">
         <mat-icon class="action-icon">calculate</mat-icon>
         <h4>Loan Calculator</h4>
-        <p>Estimate your monthly payments and total costs</p>
+        <p>Estimate repayments and total cost of borrowing</p>
       </a>
       <a routerLink="/loan-status" class="action-card card">
         <mat-icon class="action-icon">visibility</mat-icon>
         <h4>Track Applications</h4>
-        <p>View the status of your pending applications</p>
+        <p>Monitor your pending and active loans</p>
       </a>
     </div>
 

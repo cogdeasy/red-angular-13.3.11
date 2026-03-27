@@ -45,21 +45,13 @@ $hsbc-pale-gray: #F3F3F3;
 .logo-container {
   display: flex;
   align-items: center;
-  gap: 12px;
   cursor: pointer;
   text-decoration: none;
 
-  .logo-svg {
-    height: 32px;
-    width: 120px;
-  }
-
-  .app-title {
-    font-size: 1rem;
-    font-weight: 400;
-    color: $hsbc-dark-gray;
-    padding-left: 12px;
-    border-left: 1px solid $hsbc-light-gray;
+  .hsbc-logo-img {
+    height: 28px;
+    width: auto;
+    object-fit: contain;
   }
 }
 

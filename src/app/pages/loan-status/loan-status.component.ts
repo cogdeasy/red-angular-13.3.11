@@ -101,7 +101,7 @@ export class LoanStatusComponent implements OnInit {
   }
 
   formatCurrency(value: number): string {
-    return '$' + value.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    return '£' + value.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   }
 
   getTimelineSteps(loan: Loan): { label: string; date: string; completed: boolean; active: boolean }[] {
