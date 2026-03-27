@@ -2,24 +2,24 @@
   <div class="login-left">
     <div class="brand-content">
       <img src="assets/images/hsbc-logo.png" alt="HSBC" class="login-logo" />
-      <h1>Personal &amp; Business<br>Lending Solutions</h1>
-      <p>Access competitive rates, flexible terms, and dedicated support for all your borrowing needs.</p>
+      <h1>{{ 'LOGIN.TITLE' | translate }}<br>{{ 'LOGIN.TITLE_LINE2' | translate }}</h1>
+      <p>{{ 'LOGIN.SUBTITLE' | translate }}</p>
       <div class="feature-list">
         <div class="feature-item">
           <mat-icon class="feature-icon">check_circle</mat-icon>
-          <span>Rates from 3.1% APR representative</span>
+          <span>{{ 'LOGIN.FEATURE_1' | translate }}</span>
         </div>
         <div class="feature-item">
           <mat-icon class="feature-icon">check_circle</mat-icon>
-          <span>Decisions in as little as 60 seconds</span>
+          <span>{{ 'LOGIN.FEATURE_2' | translate }}</span>
         </div>
         <div class="feature-item">
           <mat-icon class="feature-icon">check_circle</mat-icon>
-          <span>Flexible terms from 6 months to 25 years</span>
+          <span>{{ 'LOGIN.FEATURE_3' | translate }}</span>
         </div>
         <div class="feature-item">
           <mat-icon class="feature-icon">check_circle</mat-icon>
-          <span>Manage everything online, anytime</span>
+          <span>{{ 'LOGIN.FEATURE_4' | translate }}</span>
         </div>
       </div>
     </div>
@@ -28,8 +28,8 @@
   <div class="login-right">
     <div class="login-form-container">
       <div class="login-header">
-        <h2>Sign in</h2>
-        <p>Access your HSBC loans account</p>
+        <h2>{{ 'LOGIN.SIGN_IN' | translate }}</h2>
+        <p>{{ 'LOGIN.ACCESS_ACCOUNT' | translate }}</p>
       </div>
 
       <div class="error-banner" *ngIf="errorMessage">
@@ -39,20 +39,20 @@
 
       <form (ngSubmit)="login()" class="login-form">
         <div class="form-group">
-          <label for="email">Email address</label>
+          <label for="email">{{ 'LOGIN.EMAIL_LABEL' | translate }}</label>
           <input
             type="email"
             id="email"
             class="form-control"
             [(ngModel)]="email"
             name="email"
-            placeholder="Enter your email"
+            [placeholder]="'LOGIN.EMAIL_PLACEHOLDER' | translate"
             [class.is-invalid]="errorMessage && !email"
             autocomplete="email">
         </div>
 
         <div class="form-group">
-          <label for="password">Password</label>
+          <label for="password">{{ 'LOGIN.PASSWORD_LABEL' | translate }}</label>
           <div class="password-field">
             <input
               [type]="showPassword ? 'text' : 'password'"
@@ -60,11 +60,11 @@
               class="form-control"
               [(ngModel)]="password"
               name="password"
-              placeholder="Enter your password"
+              [placeholder]="'LOGIN.PASSWORD_PLACEHOLDER' | translate"
               [class.is-invalid]="errorMessage && !password"
               autocomplete="current-password">
             <button type="button" class="password-toggle" (click)="togglePassword()">
-              {{ showPassword ? 'Hide' : 'Show' }}
+              {{ showPassword ? ('LOGIN.HIDE' | translate) : ('LOGIN.SHOW' | translate) }}
             </button>
           </div>
         </div>
@@ -72,22 +72,22 @@
         <div class="form-options">
           <label class="checkbox-label">
             <input type="checkbox" [(ngModel)]="rememberMe" name="rememberMe">
-            <span>Remember me</span>
+            <span>{{ 'LOGIN.REMEMBER_ME' | translate }}</span>
           </label>
-          <a href="#" class="forgot-link">Forgot password?</a>
+          <a href="#" class="forgot-link">{{ 'LOGIN.FORGOT_PASSWORD' | translate }}</a>
         </div>
 
         <button type="submit" class="btn btn-primary btn-block btn-lg" [disabled]="isLoading">
-          <span *ngIf="!isLoading">Sign in</span>
-          <span *ngIf="isLoading">Signing in...</span>
+          <span *ngIf="!isLoading">{{ 'LOGIN.SIGN_IN' | translate }}</span>
+          <span *ngIf="isLoading">{{ 'LOGIN.SIGNING_IN' | translate }}</span>
         </button>
       </form>
 
       <div class="login-footer">
-        <p class="demo-hint">Demo mode: Enter any email and password</p>
+        <p class="demo-hint">{{ 'LOGIN.DEMO_HINT' | translate }}</p>
         <div class="security-note">
           <mat-icon class="lock-icon">lock</mat-icon>
-          <span>256-bit SSL encrypted connection</span>
+          <span>{{ 'LOGIN.SSL_NOTE' | translate }}</span>
         </div>
       </div>
     </div>

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { LoanService } from '../../shared/services/loan.service';
 import { NotificationService } from '../../shared/services/notification.service';
 import { LoanType, LoanApplication } from '../../shared/models/loan.model';
+import { LanguageService } from '../../shared/services/language.service';
 
 @Component({
   selector: 'app-loan-application',
@@ -38,7 +39,8 @@ export class LoanApplicationComponent implements OnInit {
     private fb: FormBuilder,
     private loanService: LoanService,
     private notificationService: NotificationService,
-    private router: Router
+    private router: Router,
+    private languageService: LanguageService
   ) {}
 
   ngOnInit(): void {
@@ -165,7 +167,7 @@ export class LoanApplicationComponent implements OnInit {
   }
 
   formatCurrency(value: number): string {
-    return '£' + value.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    return this.languageService.formatCurrency(value);
   }
 
   submitApplication(): void {

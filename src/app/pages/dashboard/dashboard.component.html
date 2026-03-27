@@ -1,15 +1,15 @@
 <div class="dashboard-page fade-in">
   <div class="page-header">
     <div>
-      <h1>Welcome back, {{ currentUser?.firstName }}</h1>
-      <p class="subtitle">Your loans and financial activity at a glance.</p>
+      <h1>{{ 'DASHBOARD.WELCOME' | translate:{ name: currentUser?.firstName } }}</h1>
+      <p class="subtitle">{{ 'DASHBOARD.SUBTITLE' | translate }}</p>
     </div>
     <a routerLink="/loan-application" class="btn btn-primary">
-      <mat-icon>add</mat-icon> New Application
+      <mat-icon>add</mat-icon> {{ 'DASHBOARD.NEW_APPLICATION' | translate }}
     </a>
   </div>
 
-  <app-loading-spinner [isLoading]="isLoading" message="Loading your dashboard..."></app-loading-spinner>
+  <app-loading-spinner [isLoading]="isLoading" [message]="'DASHBOARD.LOADING' | translate"></app-loading-spinner>
 
   <div *ngIf="!isLoading && stats">
     <!-- Stats Cards -->
@@ -19,9 +19,9 @@
           <mat-icon>account_balance</mat-icon>
         </div>
         <div class="stat-content">
-          <span class="stat-label">Total Borrowed</span>
+          <span class="stat-label">{{ 'DASHBOARD.TOTAL_BORROWED' | translate }}</span>
           <span class="stat-value">{{ formatCurrency(stats.totalBorrowed) }}</span>
-          <span class="stat-meta">{{ stats.totalLoans }} total loans</span>
+          <span class="stat-meta">{{ 'DASHBOARD.TOTAL_LOANS' | translate:{ count: stats.totalLoans } }}</span>
         </div>
       </div>
 
@@ -30,9 +30,9 @@
           <mat-icon>payments</mat-icon>
         </div>
         <div class="stat-content">
-          <span class="stat-label">Total Paid</span>
+          <span class="stat-label">{{ 'DASHBOARD.TOTAL_PAID' | translate }}</span>
           <span class="stat-value">{{ formatCurrency(stats.totalPaid) }}</span>
-          <span class="stat-meta text-success">On track with payments</span>
+          <span class="stat-meta text-success">{{ 'DASHBOARD.ON_TRACK' | translate }}</span>
         </div>
       </div>
 
@@ -41,9 +41,9 @@
           <mat-icon>event</mat-icon>
         </div>
         <div class="stat-content">
-          <span class="stat-label">Next Payment</span>
+          <span class="stat-label">{{ 'DASHBOARD.NEXT_PAYMENT' | translate }}</span>
           <span class="stat-value">{{ formatCurrency(stats.nextPayment) }}</span>
-          <span class="stat-meta">Due {{ stats.nextPaymentDate }}</span>
+          <span class="stat-meta">{{ 'DASHBOARD.DUE' | translate:{ date: stats.nextPaymentDate } }}</span>
         </div>
       </div>
 
@@ -52,51 +52,51 @@
           <mat-icon>trending_up</mat-icon>
         </div>
         <div class="stat-content">
-          <span class="stat-label">Credit Score</span>
+          <span class="stat-label">{{ 'DASHBOARD.CREDIT_SCORE' | translate }}</span>
           <span class="stat-value">{{ stats.creditScore }}</span>
-          <span class="stat-meta text-success">+{{ stats.creditScoreChange }} this month</span>
+          <span class="stat-meta text-success">{{ 'DASHBOARD.CREDIT_CHANGE' | translate:{ change: stats.creditScoreChange } }}</span>
         </div>
       </div>
     </div>
 
     <!-- Quick Actions -->
     <div class="section-header">
-      <h2>Quick Actions</h2>
+      <h2>{{ 'DASHBOARD.QUICK_ACTIONS' | translate }}</h2>
     </div>
     <div class="quick-actions">
       <a routerLink="/loan-application" class="action-card card">
         <mat-icon class="action-icon">description</mat-icon>
-        <h4>New Application</h4>
-        <p>Personal, mortgage, or business lending</p>
+        <h4>{{ 'DASHBOARD.NEW_APP_TITLE' | translate }}</h4>
+        <p>{{ 'DASHBOARD.NEW_APP_DESC' | translate }}</p>
       </a>
       <a routerLink="/loan-calculator" class="action-card card">
         <mat-icon class="action-icon">calculate</mat-icon>
-        <h4>Loan Calculator</h4>
-        <p>Estimate repayments and total cost of borrowing</p>
+        <h4>{{ 'DASHBOARD.CALC_TITLE' | translate }}</h4>
+        <p>{{ 'DASHBOARD.CALC_DESC' | translate }}</p>
       </a>
       <a routerLink="/loan-status" class="action-card card">
         <mat-icon class="action-icon">visibility</mat-icon>
-        <h4>Track Applications</h4>
-        <p>Monitor your pending and active loans</p>
+        <h4>{{ 'DASHBOARD.TRACK_TITLE' | translate }}</h4>
+        <p>{{ 'DASHBOARD.TRACK_DESC' | translate }}</p>
       </a>
     </div>
 
     <!-- Active Loans Table -->
     <div class="section-header">
-      <h2>Your Loans</h2>
-      <a routerLink="/loan-status" class="btn btn-text">View all</a>
+      <h2>{{ 'DASHBOARD.YOUR_LOANS' | translate }}</h2>
+      <a routerLink="/loan-status" class="btn btn-text">{{ 'DASHBOARD.VIEW_ALL' | translate }}</a>
     </div>
 
     <div class="table-container">
       <table class="hsbc-table">
         <thead>
           <tr>
-            <th>Loan ID</th>
-            <th>Type</th>
-            <th>Amount</th>
-            <th>Monthly Payment</th>
-            <th>Status</th>
-            <th>Progress</th>
+            <th>{{ 'DASHBOARD.LOAN_ID' | translate }}</th>
+            <th>{{ 'DASHBOARD.TYPE' | translate }}</th>
+            <th>{{ 'DASHBOARD.AMOUNT' | translate }}</th>
+            <th>{{ 'DASHBOARD.MONTHLY_PAYMENT' | translate }}</th>
+            <th>{{ 'DASHBOARD.STATUS' | translate }}</th>
+            <th>{{ 'DASHBOARD.PROGRESS' | translate }}</th>
           </tr>
         </thead>
         <tbody>

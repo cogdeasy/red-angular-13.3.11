@@ -1,55 +1,55 @@
 <div class="calculator-page fade-in">
   <div class="page-header">
-    <h1>Loan Calculator</h1>
-    <p>Estimate your monthly repayments and total cost of borrowing.</p>
+    <h1>{{ 'CALCULATOR.TITLE' | translate }}</h1>
+    <p>{{ 'CALCULATOR.SUBTITLE' | translate }}</p>
   </div>
 
   <div class="calculator-layout">
     <!-- Input Panel -->
     <div class="card input-panel">
       <div class="card-header">
-        <h3>Calculate Your Loan</h3>
+        <h3>{{ 'CALCULATOR.CALCULATE_LOAN' | translate }}</h3>
       </div>
 
       <div class="form-group">
-        <label>Loan Type</label>
+        <label>{{ 'CALCULATOR.LOAN_TYPE' | translate }}</label>
         <select class="form-control" [(ngModel)]="selectedType" (ngModelChange)="onTypeChange()">
           <option *ngFor="let type of loanTypes" [ngValue]="type">{{ type }}</option>
         </select>
       </div>
 
       <div class="form-group">
-        <label>Loan Amount</label>
+        <label>{{ 'CALCULATOR.LOAN_AMOUNT' | translate }}</label>
         <input type="number" class="form-control" [(ngModel)]="amount" (ngModelChange)="calculate()" min="1000" max="5000000">
         <div class="range-slider">
           <input type="range" [(ngModel)]="amount" (ngModelChange)="calculate()" min="1000" max="5000000" step="1000">
           <div class="range-labels">
-            <span>£1,000</span>
-            <span>£5,000,000</span>
+            <span>{{ formatCurrency(1000) }}</span>
+            <span>{{ formatCurrency(5000000) }}</span>
           </div>
         </div>
       </div>
 
       <div class="form-group">
-        <label>Loan Term (months)</label>
+        <label>{{ 'CALCULATOR.LOAN_TERM' | translate }}</label>
         <input type="number" class="form-control" [(ngModel)]="term" (ngModelChange)="calculate()" min="6" max="360">
         <div class="range-slider">
           <input type="range" [(ngModel)]="term" (ngModelChange)="calculate()" min="6" max="360" step="6">
           <div class="range-labels">
-            <span>6 months</span>
-            <span>360 months</span>
+            <span>{{ 'CALCULATOR.MONTHS_SHORT' | translate:{ count: 6 } }}</span>
+            <span>{{ 'CALCULATOR.MONTHS_SHORT' | translate:{ count: 360 } }}</span>
           </div>
         </div>
       </div>
 
       <div class="form-group">
-        <label>Interest Rate (% APR)</label>
+        <label>{{ 'CALCULATOR.INTEREST_RATE' | translate }}</label>
         <input type="number" class="form-control" [ngModel]="interestRate" (ngModelChange)="customRate = $event; calculate()" min="0" max="30" step="0.1">
-        <span class="form-hint">Representative rate for {{ selectedType }}: {{ rateMap[selectedType] }}% APR</span>
+        <span class="form-hint">{{ 'CALCULATOR.REPRESENTATIVE_RATE' | translate:{ type: selectedType, rate: rateMap[selectedType] } }}</span>
       </div>
 
       <button class="btn btn-primary btn-block" routerLink="/loan-application">
-        Apply for This Loan
+        {{ 'CALCULATOR.APPLY_FOR_LOAN' | translate }}
       </button>
     </div>
 
@@ -57,30 +57,30 @@
     <div class="results-panel" *ngIf="calculation">
       <div class="card result-card card-accent">
         <div class="monthly-payment">
-          <span class="label">Monthly Payment</span>
+          <span class="label">{{ 'CALCULATOR.MONTHLY_PAYMENT' | translate }}</span>
           <span class="amount">{{ formatCurrency(calculation.monthlyPayment) }}</span>
-          <span class="sub-label">per month for {{ calculation.term }} months</span>
+          <span class="sub-label">{{ 'CALCULATOR.PER_MONTH_FOR' | translate:{ months: calculation.term } }}</span>
         </div>
       </div>
 
       <div class="summary-cards">
         <div class="card summary-card">
-          <span class="summary-label">Total Repayment</span>
+          <span class="summary-label">{{ 'CALCULATOR.TOTAL_REPAYMENT' | translate }}</span>
           <span class="summary-value">{{ formatCurrency(calculation.totalPayment) }}</span>
         </div>
         <div class="card summary-card">
-          <span class="summary-label">Total Interest</span>
+          <span class="summary-label">{{ 'CALCULATOR.TOTAL_INTEREST' | translate }}</span>
           <span class="summary-value text-red">{{ formatCurrency(calculation.totalInterest) }}</span>
         </div>
         <div class="card summary-card">
-          <span class="summary-label">Principal Amount</span>
+          <span class="summary-label">{{ 'CALCULATOR.PRINCIPAL_AMOUNT' | translate }}</span>
           <span class="summary-value">{{ formatCurrency(calculation.principal) }}</span>
         </div>
       </div>
 
       <!-- Pie Chart Visualization -->
       <div class="card chart-card">
-        <h4>Payment Breakdown</h4>
+        <h4>{{ 'CALCULATOR.PAYMENT_BREAKDOWN' | translate }}</h4>
         <div class="chart-container">
           <div class="donut-chart">
             <svg viewBox="0 0 120 120">
@@ -98,11 +98,11 @@
           <div class="chart-legend">
             <div class="legend-item">
               <span class="legend-dot principal"></span>
-              <span>Principal: {{ formatCurrency(calculation.principal) }} ({{ getPrincipalPercentage() }}%)</span>
+              <span>{{ 'CALCULATOR.PRINCIPAL' | translate }}: {{ formatCurrency(calculation.principal) }} ({{ getPrincipalPercentage() }}%)</span>
             </div>
             <div class="legend-item">
               <span class="legend-dot interest"></span>
-              <span>Interest: {{ formatCurrency(calculation.totalInterest) }} ({{ getInterestPercentage() }}%)</span>
+              <span>{{ 'CALCULATOR.INTEREST' | translate }}: {{ formatCurrency(calculation.totalInterest) }} ({{ getInterestPercentage() }}%)</span>
             </div>
           </div>
         </div>
@@ -113,7 +113,7 @@
         <div class="card-header" style="cursor: pointer" (click)="showAmortization = !showAmortization">
           <h4 style="margin: 0; display: flex; align-items: center; gap: 8px;">
             <mat-icon>{{ showAmortization ? 'expand_less' : 'expand_more' }}</mat-icon>
-            Amortization Schedule
+            {{ 'CALCULATOR.AMORTIZATION_SCHEDULE' | translate }}
           </h4>
         </div>
 
@@ -122,11 +122,11 @@
             <table class="hsbc-table">
               <thead>
                 <tr>
-                  <th>Month</th>
-                  <th>Payment</th>
-                  <th>Principal</th>
-                  <th>Interest</th>
-                  <th>Balance</th>
+                  <th>{{ 'CALCULATOR.MONTH' | translate }}</th>
+                  <th>{{ 'CALCULATOR.PAYMENT' | translate }}</th>
+                  <th>{{ 'CALCULATOR.PRINCIPAL' | translate }}</th>
+                  <th>{{ 'CALCULATOR.INTEREST' | translate }}</th>
+                  <th>{{ 'CALCULATOR.BALANCE' | translate }}</th>
                 </tr>
               </thead>
               <tbody>
@@ -142,15 +142,15 @@
           </div>
 
           <div class="pagination" *ngIf="totalPages > 1">
-            <button class="btn btn-outline btn-sm" (click)="prevPage()" [disabled]="amortizationPage === 0">Previous</button>
-            <span class="page-info">Page {{ amortizationPage + 1 }} of {{ totalPages }}</span>
-            <button class="btn btn-outline btn-sm" (click)="nextPage()" [disabled]="amortizationPage >= totalPages - 1">Next</button>
+            <button class="btn btn-outline btn-sm" (click)="prevPage()" [disabled]="amortizationPage === 0">{{ 'CALCULATOR.PREVIOUS' | translate }}</button>
+            <span class="page-info">{{ 'CALCULATOR.PAGE_INFO' | translate:{ current: amortizationPage + 1, total: totalPages } }}</span>
+            <button class="btn btn-outline btn-sm" (click)="nextPage()" [disabled]="amortizationPage >= totalPages - 1">{{ 'CALCULATOR.NEXT' | translate }}</button>
           </div>
         </div>
       </div>
 
       <div class="card disclaimer-card">
-        <p><strong>Disclaimer:</strong> This calculator provides estimates only. Actual rates and payments may vary based on your credit history, financial circumstances, and the specific loan product. Contact an HSBC loan specialist for a personalised quote.</p>
+        <p><strong>{{ 'CALCULATOR.DISCLAIMER_TITLE' | translate }}:</strong> {{ 'CALCULATOR.DISCLAIMER_TEXT' | translate }}</p>
       </div>
     </div>
   </div>

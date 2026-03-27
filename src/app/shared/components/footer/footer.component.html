@@ -1,19 +1,19 @@
 <footer class="hsbc-footer">
   <div class="footer-content">
     <div class="footer-links">
-      <a href="#">Privacy & Cookies</a>
+      <a href="#">{{ 'FOOTER.PRIVACY' | translate }}</a>
       <span class="divider">|</span>
-      <a href="#">Terms & Conditions</a>
+      <a href="#">{{ 'FOOTER.TERMS' | translate }}</a>
       <span class="divider">|</span>
-      <a href="#">Accessibility</a>
+      <a href="#">{{ 'FOOTER.ACCESSIBILITY' | translate }}</a>
       <span class="divider">|</span>
-      <a href="#">Security</a>
+      <a href="#">{{ 'FOOTER.SECURITY' | translate }}</a>
       <span class="divider">|</span>
-      <a href="#">Contact Us</a>
+      <a href="#">{{ 'FOOTER.CONTACT' | translate }}</a>
     </div>
     <div class="footer-info">
-      <p>&copy; {{ currentYear }} HSBC Holdings plc. All rights reserved.</p>
-      <p class="disclaimer">HSBC Holdings plc is registered in England & Wales. Registered Office: 8 Canada Square, London E14 5HQ.</p>
+      <p>{{ 'FOOTER.COPYRIGHT' | translate:{ year: currentYear } }}</p>
+      <p class="disclaimer">{{ 'FOOTER.DISCLAIMER' | translate }}</p>
     </div>
   </div>
 </footer>

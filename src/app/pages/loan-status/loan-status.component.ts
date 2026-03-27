@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoanService } from '../../shared/services/loan.service';
 import { Loan, LoanStatus, LoanType } from '../../shared/models/loan.model';
+import { LanguageService } from '../../shared/services/language.service';
 
 @Component({
   selector: 'app-loan-status',
@@ -24,7 +25,7 @@ export class LoanStatusComponent implements OnInit {
     { value: LoanStatus.CLOSED, label: 'Closed' }
   ];
 
-  constructor(private loanService: LoanService) {}
+  constructor(private loanService: LoanService, private languageService: LanguageService) {}
 
   ngOnInit(): void {
     this.loadLoans();
@@ -101,7 +102,7 @@ export class LoanStatusComponent implements OnInit {
   }
 
   formatCurrency(value: number): string {
-    return '£' + value.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    return this.languageService.formatCurrency(value);
   }
 
   getTimelineSteps(loan: Loan): { label: string; date: string; completed: boolean; active: boolean }[] {

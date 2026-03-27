@@ -4,6 +4,7 @@ import { LoanService } from '../../shared/services/loan.service';
 import { AuthService } from '../../shared/services/auth.service';
 import { Loan, LoanStatus, DashboardStats } from '../../shared/models/loan.model';
 import { User } from '../../shared/models/user.model';
+import { LanguageService } from '../../shared/services/language.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -19,7 +20,8 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private loanService: LoanService,
-    private authService: AuthService
+    private authService: AuthService,
+    private languageService: LanguageService
   ) {}
 
   ngOnInit(): void {
@@ -72,6 +74,6 @@ export class DashboardComponent implements OnInit {
   }
 
   formatCurrency(value: number): string {
-    return '£' + value.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    return this.languageService.formatCurrency(value);
   }
 }
