@@ -36,6 +36,12 @@ export class ProfileComponent implements OnInit {
   }
 
   saveProfile(): void {
+    if (this.currentUser) {
+      this.currentUser.firstName = this.editForm.firstName;
+      this.currentUser.lastName = this.editForm.lastName;
+      this.currentUser.email = this.editForm.email;
+      this.currentUser.phone = this.editForm.phone;
+    }
     this.isEditing = false;
   }
 }

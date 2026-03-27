@@ -375,7 +375,7 @@
 
       <div class="terms-section">
         <label class="checkbox-label">
-          <input type="checkbox" #termsCheckbox>
+          <input type="checkbox" [(ngModel)]="termsAccepted" [ngModelOptions]="{standalone: true}">
           <span>I confirm that all information provided is accurate and I agree to HSBC's <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a>.</span>
         </label>
       </div>
@@ -390,7 +390,7 @@
       <button class="btn btn-primary" *ngIf="currentStep < 4" (click)="nextStep()">
         Next <mat-icon>chevron_right</mat-icon>
       </button>
-      <button class="btn btn-primary btn-lg" *ngIf="currentStep === 4" (click)="submitApplication()" [disabled]="isSubmitting">
+      <button class="btn btn-primary btn-lg" *ngIf="currentStep === 4" (click)="submitApplication()" [disabled]="isSubmitting || !termsAccepted">
         <span *ngIf="!isSubmitting">Submit Application</span>
         <span *ngIf="isSubmitting">Submitting...</span>
       </button>

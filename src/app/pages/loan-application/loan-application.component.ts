@@ -16,6 +16,7 @@ export class LoanApplicationComponent implements OnInit {
   isSubmitting = false;
   isSubmitted = false;
   submittedLoanId = '';
+  termsAccepted = false;
 
   personalInfoForm!: FormGroup;
   employmentForm!: FormGroup;
@@ -168,7 +169,7 @@ export class LoanApplicationComponent implements OnInit {
   }
 
   submitApplication(): void {
-    if (!this.personalInfoForm.valid || !this.employmentForm.valid || !this.loanDetailsForm.valid) {
+    if (!this.personalInfoForm.valid || !this.employmentForm.valid || !this.loanDetailsForm.valid || !this.termsAccepted) {
       return;
     }
 

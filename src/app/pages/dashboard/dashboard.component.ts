@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { forkJoin } from 'rxjs';
 import { LoanService } from '../../shared/services/loan.service';
 import { AuthService } from '../../shared/services/auth.service';
 import { Loan, LoanStatus, DashboardStats } from '../../shared/models/loan.model';
@@ -29,14 +30,19 @@ export class DashboardComponent implements OnInit {
   loadData(): void {
     this.isLoading = true;
 
-    this.loanService.getDashboardStats().subscribe(stats => {
-      this.stats = stats;
-    });
-
-    this.loanService.getLoans().subscribe(loans => {
-      this.loans = loans;
-      this.recentLoans = loans.slice(0, 4);
-      this.isLoading = false;
+    forkJoin([
+      this.loanService.getDashboardStats(),
+      this.loanService.getLoans()
+    ]).subscribe({
+      next: ([stats, loans]) => {
+        this.stats = stats;
+        this.loans = loans;
+        this.recentLoans = loans.slice(0, 4);
+        this.isLoading = false;
+      },
+      error: () => {
+        this.isLoading = false;
+      }
     });
   }
 
