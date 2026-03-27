@@ -22,7 +22,7 @@
         <label>Loan Amount</label>
         <input type="number" class="form-control" [(ngModel)]="amount" (ngModelChange)="calculate()" min="1000" max="5000000">
         <div class="range-slider">
-          <input type="range" [(ngModel)]="amount" (ngModelChange)="calculate()" min="1000" max="1000000" step="1000">
+          <input type="range" [(ngModel)]="amount" (ngModelChange)="calculate()" min="1000" max="5000000" step="1000">
           <div class="range-labels">
             <span>$1,000</span>
             <span>$1,000,000</span>

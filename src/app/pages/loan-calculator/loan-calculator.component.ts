@@ -87,6 +87,6 @@ export class LoanCalculatorComponent implements OnInit {
 
   getPrincipalPercentage(): number {
     if (!this.calculation || this.calculation.totalPayment === 0) return 0;
-    return Math.round((this.calculation.principal / this.calculation.totalPayment) * 100);
+    return 100 - this.getInterestPercentage();
   }
 }

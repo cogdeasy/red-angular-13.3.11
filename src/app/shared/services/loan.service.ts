@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
-import { delay } from 'rxjs/operators';
+import { delay, tap } from 'rxjs/operators';
 import {
   Loan, LoanType, LoanStatus, LoanApplication,
   LoanCalculation, AmortizationEntry, DashboardStats
@@ -138,10 +138,13 @@ export class LoanService {
     const calc = this.calculateLoan(newLoan.amount, newLoan.interestRate, newLoan.term);
     newLoan.monthlyPayment = calc.monthlyPayment;
 
-    this.loans = [...this.loans, newLoan];
-    this.loansSubject.next(this.loans);
-
-    return of(newLoan).pipe(delay(1500));
+    return of(newLoan).pipe(
+      delay(1500),
+      tap(() => {
+        this.loans = [...this.loans, newLoan];
+        this.loansSubject.next(this.loans);
+      })
+    );
   }
 
   calculateLoan(principal: number, annualRate: number, termMonths: number): LoanCalculation {
